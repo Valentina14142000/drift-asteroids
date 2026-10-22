@@ -1,0 +1,50 @@
+:root{--void:#07060f;--ink:#f1eeff;--dim:#9a94cf;--teal:#5ef2d0;--pink:#ff4fa3;--gold:#ffd166;--line:rgba(154,148,207,.22);
+ color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100%;display:flex;justify-content:center;color:var(--ink);font-family:Manrope,system-ui,sans-serif;
+ background:radial-gradient(ellipse at 15% 0%,#1d1347 0%,var(--void) 62%) fixed}
+.shell{width:min(100%,1000px);padding:16px;display:flex;flex-direction:column;gap:14px}
+
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font:700 22px Unbounded,system-ui,sans-serif}
+.brand svg{width:26px;height:26px;filter:drop-shadow(0 0 6px var(--teal))}
+.stats{display:flex;align-items:flex-end;gap:24px}
+.stat span{display:block;font-size:12px;color:var(--dim)}
+.stat b{font:700 22px Unbounded,system-ui,sans-serif;font-variant-numeric:tabular-nums}
+.pips{display:flex;gap:6px;height:22px;align-items:center}
+.pips i{width:12px;height:14px;background:var(--teal);clip-path:polygon(50% 0,100% 100%,50% 72%,0 100%)}
+.toggle,.btn{font:700 14px Manrope,system-ui,sans-serif;border-radius:999px;padding:10px 18px;cursor:pointer;transition:transform .15s,box-shadow .15s,border-color .15s}
+.toggle{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.toggle:hover{border-color:var(--teal)}
+body[data-auto="1"] .toggle{color:var(--gold);border-color:var(--gold);box-shadow:0 0 18px rgba(255,209,102,.35)}
+
+.stage{position:relative;width:min(100%,calc((100vh - 190px) * 1.40625));min-width:min(100%,320px);margin:0 auto;border-radius:16px;overflow:hidden;
+ border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.55)}
+canvas{display:block;width:100%;aspect-ratio:900/640;touch-action:none}
+.overlay{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;text-align:center;
+ background:rgba(7,6,15,.66);backdrop-filter:blur(6px)}
+body[data-state="title"] #title,body[data-state="over"] #over{display:flex}
+.overlay h2{margin:0;font:700 clamp(40px,9vw,92px)/1 Unbounded,system-ui,sans-serif;
+ background:linear-gradient(100deg,var(--teal),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+#over h2{font-size:clamp(34px,7vw,64px)}
+.lede{margin:0;max-width:44ch;font-size:clamp(14px,2vw,18px);line-height:1.5;color:#d9d4ff}
+.facts{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:14px;color:var(--dim);text-align:left}
+.facts li{display:flex;gap:10px;align-items:baseline}
+.facts li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--pink);box-shadow:0 0 8px var(--pink);transform:translateY(-1px)}
+.facts li:first-child::before{background:var(--gold);box-shadow:0 0 8px var(--gold)}
+.big{font:700 clamp(28px,5vw,44px) Unbounded,system-ui,sans-serif}
+.tag{margin:0;color:var(--gold);font-weight:700}
+.row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.btn{border:1px solid var(--line);background:transparent;color:var(--ink)}
+.btn.primary{background:var(--teal);border-color:var(--teal);color:#06130f}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(94,242,208,.28)}
+:is(.btn,.toggle,.pad button,canvas):focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+.keys{margin:0;text-align:center;color:var(--dim);font-size:13px}
+kbd{font:600 12px Manrope,system-ui,sans-serif;padding:2px 7px;border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;color:var(--ink)}
+.pad{display:none;gap:8px;justify-content:center;flex-wrap:wrap}
+.pad button{background:rgba(29,19,71,.8);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:16px 20px;font:700 14px Manrope,system-ui,sans-serif;touch-action:none;user-select:none}
+@media (pointer:coarse){.pad{display:flex}.keys{display:none}}
+@media (max-width:560px){.stats{gap:16px}.stat b{font-size:18px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}

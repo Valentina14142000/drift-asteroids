@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Drift – AI Asteroids</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Unbounded:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-state="title" data-auto="0">
+<main class="shell">
+  <header class="bar">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 21 21 12 16 3 21Z" fill="none" stroke="#5ef2d0" stroke-width="2" stroke-linejoin="round"/></svg>
+      Drift
+    </div>
+    <div class="stats" aria-live="off">
+      <div class="stat"><span>Score</span><b id="score">0</b></div>
+      <div class="stat"><span>Wave</span><b id="wave">1</b></div>
+      <div class="stat"><span>Best</span><b id="best">0</b></div>
+      <div class="pips" id="lives" aria-label="Lives"></div>
+    </div>
+    <button class="toggle" id="autoBtn" aria-pressed="false">Autopilot</button>
+  </header>
+
+  <div class="stage">
+    <canvas id="c" tabindex="0" aria-label="Asteroids game"></canvas>
+
+    <section class="overlay" id="title">
+      <h2>Drift</h2>
+      <p class="lede">Clear the asteroid field and stay ahead of a drone that learns to lead its shots.</p>
+      <ul class="facts">
+        <li>The hunter drone predicts your path and aims sharper every wave.</li>
+        <li>The autopilot dodges and shoots on its own. Toggle it any time.</li>
+      </ul>
+      <div class="row">
+        <button class="btn primary go">Start flying</button>
+        <button class="btn" id="demo">Watch the autopilot</button>
+      </div>
+    </section>
+
+    <section class="overlay" id="over">
+      <h2>Hull lost</h2>
+      <div class="big" id="final">0</div>
+      <p class="tag" id="newbest" hidden>New best score</p>
+      <div class="row"><button class="btn primary go">Fly again</button></div>
+    </section>
+  </div>
+
+  <p class="keys"><kbd>←</kbd> <kbd>→</kbd> turn &nbsp; <kbd>↑</kbd> thrust &nbsp; <kbd>Space</kbd> fire &nbsp; <kbd>A</kbd> autopilot</p>
+  <div class="pad">
+    <button data-k="ArrowLeft">Left</button><button data-k="ArrowRight">Right</button><button data-k="ArrowUp">Thrust</button><button data-k="Space">Fire</button>
+  </div>
+</main>
+<script src="game.js"></script>
+</body>
+</html>
