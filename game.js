@@ -7,6 +7,9 @@ addEventListener('keydown',e=>{K[e.code]=1;
  if(e.code==='KeyA'&&!e.repeat)auto=!auto;
  if((e.code==='Space'||e.code==='Enter')&&state!=='play')start();});
 addEventListener('keyup',e=>K[e.code]=0);
+addEventListener('blur',()=>{for(const k in K)K[k]=0});
+cv.addEventListener('pointerdown',()=>cv.focus());
+window.focus();
 document.querySelectorAll('[data-k]').forEach(b=>{
  b.addEventListener('pointerdown',e=>{K[b.dataset.k]=1;if(state!=='play'&&b.dataset.k==='Space')start()});
  ['pointerup','pointerleave','pointercancel'].forEach(t=>b.addEventListener(t,()=>K[b.dataset.k]=0));});
